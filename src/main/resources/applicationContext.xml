@@ -5,9 +5,16 @@
 
 
     <bean id="t1000" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000">
-        <constructor-arg ref="toshibaHand"/>
-        <constructor-arg ref="toshibaLeg"/>
-        <constructor-arg ref="sonyHead"/>
+        <!--  constructor  -->
+        <!--<constructor-arg ref="toshibaHand"/>-->
+        <!--<constructor-arg ref="toshibaLeg"/>-->
+        <!--<constructor-arg ref="sonyHead"/>-->
+
+        <!--getters setters-->
+        <property name="hand" ref="toshibaHand"/>
+        <property name="leg" ref="sonyLeg"/>
+        <property name="head" ref="sonyHead"/>
+
     </bean>
 
 
