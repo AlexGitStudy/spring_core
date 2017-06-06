@@ -1,2 +1,4 @@
 .idea
 spring_core.iml
+src/test/
+target/
