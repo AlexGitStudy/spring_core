@@ -10,7 +10,7 @@ public class Start {
         Object object = context.getBean("t1000");
         if (object instanceof ModelT1000) {
             ModelT1000 t1000 = (ModelT1000) object;
-            t1000.dance();
+            t1000.action();
         }
     }
 }

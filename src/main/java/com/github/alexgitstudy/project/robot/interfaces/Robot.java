@@ -1,7 +1,7 @@
 package com.github.alexgitstudy.project.robot.interfaces;
 
 public interface Robot {
-    void fire();
+    void action();
 
     void dance();
 }
