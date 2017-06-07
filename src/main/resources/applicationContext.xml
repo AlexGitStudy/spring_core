@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="t1000" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000">
+    <bean id="t1000" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000"
+
+          p:hand-ref="toshibaHand"
+          p:leg-ref="sonyLeg"
+          p:head-ref="toshibaHead"
+
+    >
+
+        <!--индексация через index дает понять порядковый номер переменной, к какой по счету переменной в конструкторе он относится-->
+        <!--еще можно указать тип параметра через type=-->
+        <!--но но index и type не обязательны-->
+        <constructor-arg value="silver" index="0"/>
+        <constructor-arg value="2006" type="int"/>
+        <constructor-arg value="true"/>
+
         <!--  constructor  -->
         <!--<constructor-arg ref="toshibaHand"/>-->
         <!--<constructor-arg ref="toshibaLeg"/>-->
         <!--<constructor-arg ref="sonyHead"/>-->
 
-        <!--getters setters-->
+
+        <!--getters setters (без name space p:)-->
         <property name="hand" ref="toshibaHand"/>
         <property name="leg" ref="sonyLeg"/>
         <property name="head" ref="sonyHead"/>
+
+    </bean>
+
+    <bean id="t1000Empty" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000">
+
+        <constructor-arg ref="sonyHand"/>
+        <constructor-arg ref="sonyLeg"/>
+        <constructor-arg ref="toshibaHead"/>
 
     </bean>
 
