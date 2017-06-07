@@ -2,7 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="initObject"
+       default-lazy-init="true"
+>
+    <!--default-lazy-init="true" обозначает ленивую инициализацию для всех бинов, пока не вызовешь, загружаться не будут-->
 
 
     <bean id="t1000" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000"
@@ -10,6 +14,7 @@
           p:hand-ref="toshibaHand"
           p:leg-ref="sonyLeg"
           p:head-ref="toshibaHead"
+
 
     >
 
@@ -33,7 +38,14 @@
 
     </bean>
 
-    <bean id="t1000Empty" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000">
+    <!--scope prototype обозначает при каждом вызове, вызывать новый объект. singelton объект будет одним и тем же-->
+    <!--init distroy обозночает выполнить перед запуском объекта и после выполнения объекта. Их default-init-metod можно писать и в начале кода так где name space-->
+    <bean id="t1000Empty" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000"
+          scope="prototype"
+          init-method="initObject"
+          destroy-method="detroyObject"
+
+    >
 
         <constructor-arg ref="sonyHand"/>
         <constructor-arg ref="sonyLeg"/>
