@@ -4,8 +4,10 @@ import com.github.alexgitstudy.project.robot.interfaces.Hand;
 import com.github.alexgitstudy.project.robot.interfaces.Head;
 import com.github.alexgitstudy.project.robot.interfaces.Leg;
 import com.github.alexgitstudy.project.robot.interfaces.Robot;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 
-public class ModelT1000 implements Robot {
+public class ModelT1000 implements Robot, InitializingBean, DisposableBean {
 
     private Hand hand;
     private Leg leg;
@@ -112,4 +114,13 @@ public class ModelT1000 implements Robot {
 
     }
 
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("init metod");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("destroy metod");
+    }
 }

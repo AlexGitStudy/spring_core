@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
        default-init-method="initObject"
        default-lazy-init="true"
 >
@@ -52,8 +52,8 @@
         <constructor-arg ref="toshibaHead"/>
 
     </bean>
-
-
+    <!--через бин пост процессор можно тоже выполнять дейстрие перед инициализацией бина и после-->
+    <bean class="com.github.alexgitstudy.project.robot.main.MyBeanPostProcessor"/>
     <bean id="sonyHand" class="com.github.alexgitstudy.project.robot.impls.sony.SonyHand"/>
     <bean id="sonyHead" class="com.github.alexgitstudy.project.robot.impls.sony.SonyHead"/>
     <bean id="sonyLeg" class="com.github.alexgitstudy.project.robot.impls.sony.SonyLeg"/>
