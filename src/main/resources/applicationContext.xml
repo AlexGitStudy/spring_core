@@ -1,65 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
        default-init-method="initObject"
        default-lazy-init="true"
 >
     <!--default-lazy-init="true" обозначает ленивую инициализацию для всех бинов, пока не вызовешь, загружаться не будут-->
 
+    <import resource="t1000_context.xml"/>
 
-    <bean id="t1000" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000"
-
-          p:hand-ref="toshibaHand"
-          p:leg-ref="sonyLeg"
-          p:head-ref="toshibaHead"
-
-
-    >
-
-        <!--индексация через index дает понять порядковый номер переменной, к какой по счету переменной в конструкторе он относится-->
-        <!--еще можно указать тип параметра через type=-->
-        <!--но но index и type не обязательны-->
-        <constructor-arg value="silver" index="0"/>
-        <constructor-arg value="2006" type="int"/>
-        <constructor-arg value="true"/>
-
-        <!--  constructor  -->
-        <!--<constructor-arg ref="toshibaHand"/>-->
-        <!--<constructor-arg ref="toshibaLeg"/>-->
-        <!--<constructor-arg ref="sonyHead"/>-->
-
-
-        <!--getters setters (без name space p:)-->
-        <property name="hand" ref="toshibaHand"/>
-        <property name="leg" ref="sonyLeg"/>
-        <property name="head" ref="sonyHead"/>
-
-    </bean>
-
-    <!--scope prototype обозначает при каждом вызове, вызывать новый объект. singelton объект будет одним и тем же-->
-    <!--init distroy обозночает выполнить перед запуском объекта и после выполнения объекта. Их default-init-metod можно писать и в начале кода так где name space-->
-    <bean id="t1000Empty" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000"
-          scope="prototype"
-          init-method="initObject"
-          destroy-method="detroyObject"
-
-    >
-
-        <constructor-arg ref="sonyHand"/>
-        <constructor-arg ref="sonyLeg"/>
-        <constructor-arg ref="toshibaHead"/>
-
-    </bean>
     <!--через бин пост процессор можно тоже выполнять дейстрие перед инициализацией бина и после-->
     <bean class="com.github.alexgitstudy.project.robot.main.MyBeanPostProcessor"/>
-    <bean id="sonyHand" class="com.github.alexgitstudy.project.robot.impls.sony.SonyHand"/>
-    <bean id="sonyHead" class="com.github.alexgitstudy.project.robot.impls.sony.SonyHead"/>
-    <bean id="sonyLeg" class="com.github.alexgitstudy.project.robot.impls.sony.SonyLeg"/>
-
-    <bean id="toshibaHand" class="com.github.alexgitstudy.project.robot.impls.toshiba.ToshibaHand"/>
-    <bean id="toshibaHead" class="com.github.alexgitstudy.project.robot.impls.toshiba.ToshibaHead"/>
-    <bean id="toshibaLeg" class="com.github.alexgitstudy.project.robot.impls.toshiba.ToshibaLeg"/>
-
 </beans>
