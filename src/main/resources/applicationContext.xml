@@ -10,6 +10,12 @@
     <import resource="t1000_context.xml"/>
 
 
+    <bean id="t1000Conveyor" class="com.github.alexgitstudy.project.robot.impls.robot.T1000Conveyor">
+        <!--lookup-method конвеер в 1 екземпляре и создает любое количество объектов которые прописанны в t1000-->
+        <lookup-method name="createRobot" bean="t1000"/>
+    </bean>
+
+
     <!--через бин пост процессор можно тоже выполнять дейстрие перед инициализацией бина и после-->
     <bean class="com.github.alexgitstudy.project.robot.main.MyBeanPostProcessor"/>
 </beans>
