@@ -13,8 +13,8 @@ public class Start {
 //            t1000.action();
             System.out.println(t1000);
         }
-        ModelT1000 t1000 = (ModelT1000) context.getBean("t1000Empty");
-
-        System.out.println(t1000);
+//        ModelT1000 t1000 = (ModelT1000) context.getBean("t1000Empty");
+//
+//        System.out.println(t1000);
     }
 }

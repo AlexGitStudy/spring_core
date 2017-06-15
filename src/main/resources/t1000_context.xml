@@ -1,54 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
-
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <import resource="sony_context.xml"/>
-    <import resource="toshiba_context.xml"/>
-    <import resource="db_context.xml"/>
-<!-- depends-on="databaseBean" в данном случае вместо databaseBean можно поставить и другой бин, например наш t1000Empty! Или можно строить цепочки наследования первый зависит от второго, второй от 3 и все эти бины будут по  цепочке загружаться-->
-    <bean id="t1000" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000"
-          p:hand-ref="toshibaHand"
-          p:leg-ref="sonyLeg"
-          p:head-ref="toshibaHead"
-
-          depends-on="databaseBean"
-    >
-
-        <!--индексация через index дает понять порядковый номер переменной, к какой по счету переменной в конструкторе он относится-->
-        <!--еще можно указать тип параметра через type=-->
-        <!--но но index и type не обязательны-->
-        <constructor-arg value="silver" index="0"/>
-        <constructor-arg value="2006" type="int"/>
-        <constructor-arg value="true"/>
-
-        <!--  constructor  -->
-        <!--<constructor-arg ref="toshibaHand"/>-->
-        <!--<constructor-arg ref="toshibaLeg"/>-->
-        <!--<constructor-arg ref="sonyHead"/>-->
-
-
-        <!--getters setters (без name space p:)-->
-        <property name="hand" ref="toshibaHand"/>
-        <property name="leg" ref="sonyLeg"/>
-        <property name="head" ref="sonyHead"/>
-
-    </bean>
-    <!--scope prototype обозначает при каждом вызове, вызывать новый объект. singelton объект будет одним и тем же-->
-    <!--init distroy обозночает выполнить перед запуском объекта и после выполнения объекта. Их default-init-metod можно писать и в начале кода так где name space-->
-    <bean id="t1000Empty" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000"
-          scope="prototype"
-          init-method="initObject"
-          destroy-method="detroyObject"
-    >
-
-        <constructor-arg ref="sonyHand"/>
-        <constructor-arg ref="sonyLeg"/>
-        <constructor-arg ref="toshibaHead"/>
-
-    </bean>
-
-
-</beans>
+<?xml version="1.0" encoding="UTF-8"?><beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"       xmlns="http://www.springframework.org/schema/beans"       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">    <import resource="sony_context.xml"/>    <import resource="toshiba_context.xml"/>    <import resource="db_context.xml"/><!-- depends-on="databaseBean" в данном случае вместо databaseBean можно поставить и другой бин, например наш t1000Empty! Или можно строить цепочки наследования первый зависит от второго, второй от 3 и все эти бины будут по  цепочке загружаться-->    <bean id="t1000" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000"          parent="baseModal"       >        <constructor-arg value="silver" index="3"/>        <constructor-arg value="2006" index="4" type="int"/>        <constructor-arg value="true" index="5"/>    </bean>    <!--Чтобы не прописывать конструктор 2 раза мы просто его наследуем через parent="baseModal" -->    <bean id="baseModal" abstract="true">        <constructor-arg ref="sonyHand"/>        <constructor-arg ref="sonyLeg"/>        <constructor-arg ref="toshibaHead"/><!--возможно переопределять свойство, заменить переменную заданную в конструкторе через сеттер-->        <property name="head" ref="sonyHead"/>    </bean></beans>
