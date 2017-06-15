@@ -7,11 +7,14 @@
 
     <import resource="sony_context.xml"/>
     <import resource="toshiba_context.xml"/>
-
+    <import resource="db_context.xml"/>
+<!-- depends-on="databaseBean" в данном случае вместо databaseBean можно поставить и другой бин, например наш t1000Empty! Или можно строить цепочки наследования первый зависит от второго, второй от 3 и все эти бины будут по  цепочке загружаться-->
     <bean id="t1000" class="com.github.alexgitstudy.project.robot.impls.robot.ModelT1000"
           p:hand-ref="toshibaHand"
           p:leg-ref="sonyLeg"
           p:head-ref="toshibaHead"
+
+          depends-on="databaseBean"
     >
 
         <!--индексация через index дает понять порядковый номер переменной, к какой по счету переменной в конструкторе он относится-->
