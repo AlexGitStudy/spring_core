@@ -5,9 +5,12 @@ import com.github.alexgitstudy.project.robot.interfaces.Head;
 import com.github.alexgitstudy.project.robot.interfaces.Leg;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
-@Component
+@Configuration
 public class ModelT1000 extends BaseModel implements InitializingBean, DisposableBean {
 
 
@@ -31,6 +34,8 @@ public class ModelT1000 extends BaseModel implements InitializingBean, Disposabl
         this.soundEnabled = soundEnabled;
     }
 
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public ModelT1000 model1(){
         return new ModelT1000();
     }
