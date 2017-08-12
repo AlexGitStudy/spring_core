@@ -7,6 +7,6 @@
 
     <bean id="toshibaHand" class="com.github.alexgitstudy.project.robot.impls.toshiba.ToshibaHand"/>
     <bean id="toshibaHead" class="com.github.alexgitstudy.project.robot.impls.toshiba.ToshibaHead"/>
-    <!--<bean id="toshibaLeg" class="com.github.alexgitstudy.project.robot.impls.toshiba.ToshibaLeg"/>-->
+    <bean id="toshibaLeg" class="com.github.alexgitstudy.project.robot.impls.toshiba.ToshibaLeg"/>
 
 </beans>

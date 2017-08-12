@@ -3,10 +3,11 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-lazy-init="true"
+       default-autowire-candidates="false"
 >
 
-    <!--<bean id="sonyHand" class="com.github.alexgitstudy.project.robot.impls.sony.SonyHand"/>-->
-    <!--<bean id="sonyHead" class="com.github.alexgitstudy.project.robot.impls.sony.SonyHead"/>-->
+    <bean id="sonyHand" class="com.github.alexgitstudy.project.robot.impls.sony.SonyHand"/>
+    <bean id="sonyHead" class="com.github.alexgitstudy.project.robot.impls.sony.SonyHead"/>
     <bean id="sonyLeg" class="com.github.alexgitstudy.project.robot.impls.sony.SonyLeg"/>
 
 </beans>
