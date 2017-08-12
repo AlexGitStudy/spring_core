@@ -1,4 +1,4 @@
-package com.github.alexgitstudy.project.robot.impls.robot;
+package com.github.alexgitstudy.project.robot.impls.conveyor;
 
 import com.github.alexgitstudy.project.robot.interfaces.Robot;
 import com.github.alexgitstudy.project.robot.interfaces.RobotConveyor;

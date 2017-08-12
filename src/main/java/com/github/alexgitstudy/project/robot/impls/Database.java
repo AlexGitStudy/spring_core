@@ -9,7 +9,7 @@ public class Database {
         testConnect();
     }
 
-    public void testConnect(){
+    private void testConnect(){
 
 
         System.out.println("Test connection\n");
