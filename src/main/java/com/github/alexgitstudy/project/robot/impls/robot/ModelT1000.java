@@ -5,7 +5,9 @@ import com.github.alexgitstudy.project.robot.interfaces.Head;
 import com.github.alexgitstudy.project.robot.interfaces.Leg;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ModelT1000 extends BaseModel implements InitializingBean, DisposableBean {
 
 
@@ -17,17 +19,20 @@ public class ModelT1000 extends BaseModel implements InitializingBean, Disposabl
     public ModelT1000() {
     }
 
-    public ModelT1000(Hand hand, Leg leg, Head head) {
-        super(hand, leg, head);
-    }
-
+//    public ModelT1000(Hand hand, Leg leg, Head head) {
+//        super(hand, leg, head);
+//    }
 
 
     public ModelT1000(Hand hand, Leg leg, Head head, String color, int year, boolean soundEnabled) {
-        super(hand, leg, head);
+//        super(hand, leg, head);
         this.color = color;
         this.year = year;
         this.soundEnabled = soundEnabled;
+    }
+
+    public ModelT1000 model1(){
+        return new ModelT1000();
     }
 
     public ModelT1000(String color, int year, boolean soundEnabled) {
@@ -76,14 +81,6 @@ public class ModelT1000 extends BaseModel implements InitializingBean, Disposabl
         this.soundEnabled = soundEnabled;
     }
 
-    public void initObject() {
-        System.out.println("init");
-    }
-
-    public void detroyObject() {
-        System.out.println("destroy");
-
-    }
 
     @Override
     public void afterPropertiesSet() throws Exception {
